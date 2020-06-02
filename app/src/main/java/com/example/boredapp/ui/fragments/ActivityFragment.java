@@ -34,6 +34,7 @@ import io.reactivex.schedulers.Schedulers;
 public class ActivityFragment extends Fragment {
     private BoredApi apiService = ApiUtils.getApiService();
     private String mLink = "";
+    private TypeActivity mType = TypeActivity.EMPTY;
 
     private Button mBtnDo;
     private Button mBtnOpenLink;
@@ -69,21 +70,10 @@ public class ActivityFragment extends Fragment {
     }
 
     private void initSpinner() {
-        //TODO localization and normal ENUM
-        String[] typeArray = TypeActivity.EMPTY.getLowerCase();
+        String[] typeArray = getResources().getStringArray(R.array.TypeActivity);
         SpinnerAdapter spinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line, typeArray);
 
         mSpinnerType.setAdapter(spinnerAdapter);
-        mSpinnerType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
     }
 
     @Override
@@ -121,7 +111,6 @@ public class ActivityFragment extends Fragment {
                         if (activityModel.getLink() != null && !activityModel.getLink().isEmpty()) {
                             mLink = activityModel.getLink();
                             mBtnOpenLink.setVisibility(View.VISIBLE);
-                            //TODO SetOnClickListener
                         } else {
                             mBtnOpenLink.setVisibility(View.GONE);
                         }
@@ -146,8 +135,7 @@ public class ActivityFragment extends Fragment {
     }
 
     private Single<ActivityModel> checkFieldsWithType(int typeId) {
-        //TODO normal ENUM
-        String type = TypeActivity.EMPTY.getLowerCase()[typeId];
+        String type = mType.getLowerCase()[typeId];
         try {
             int i = Integer.parseInt(mEtInputParticipants.getText().toString());
             if (i > 0) {

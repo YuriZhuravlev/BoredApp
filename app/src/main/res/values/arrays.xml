@@ -3,8 +3,8 @@
     <string-array name="TypeActivity">
         <item>Не выбрано</item>
         <item>Образование</item>
-        <item>recreational</item>
-        <item>Социальное</item>
+        <item>Развлечения</item>
+        <item>Социальная активность</item>
         <item>Поделки</item>
         <item>Благотворительность</item>
         <item>Кулинария</item>
@@ -12,5 +12,4 @@
         <item>Музыка</item>
         <item>Деловая работа</item>
     </string-array>
- <!--   "empty", "education", "recreational", "social", "diy", "charity", "cooking", "relaxation", "music", "busywork"-->
 </resources>
