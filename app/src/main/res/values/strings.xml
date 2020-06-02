@@ -6,4 +6,5 @@
     <string name="participants">Количество людей</string>
     <string name="rb_price">Только бесплатные варианты</string>
     <string name="btn_text">Мне повезёт!</string>
+    <string name="btn_open_link">Попробуй здесь</string>
 </resources>
