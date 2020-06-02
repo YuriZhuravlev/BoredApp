@@ -20,7 +20,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiUtils {
-    public static final String SERVER_URL = "http://www.boredapi.com/api/";
+    public static final String SERVER_URL = "https://www.boredapi.com/api/";
     public static final double PRICE_FREE = 0.;
 
     private static Retrofit retrofit;

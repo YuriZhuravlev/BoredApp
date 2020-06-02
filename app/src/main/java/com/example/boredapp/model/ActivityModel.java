@@ -29,59 +29,59 @@ public class ActivityModel {
     @SerializedName("key")
     private String mId;
 
-    public String getMActivity() {
+    public String getActivity() {
         return mActivity;
     }
 
-    public void setMActivity(String mActivity) {
-        this.mActivity = mActivity;
+    public void setActivity(String activity) {
+        mActivity = activity;
     }
 
-    public double getMAccessibility() {
+    public double getAccessibility() {
         return mAccessibility;
     }
 
-    public void setMAccessibility(double mAccessibility) {
-        this.mAccessibility = mAccessibility;
+    public void setAccessibility(double accessibility) {
+        mAccessibility = accessibility;
     }
 
-    public String getMType() {
+    public String getType() {
         return mType;
     }
 
-    public void setMType(String mType) {
-        this.mType = mType;
+    public void setType(String type) {
+        mType = type;
     }
 
-    public int getMParticipants() {
+    public int getParticipants() {
         return mParticipants;
     }
 
-    public void setMParticipants(int mParticipants) {
-        this.mParticipants = mParticipants;
+    public void setParticipants(int participants) {
+        mParticipants = participants;
     }
 
-    public double getMPrice() {
+    public double getPrice() {
         return mPrice;
     }
 
-    public void setMPrice(double mPrice) {
-        this.mPrice = mPrice;
+    public void setPrice(double price) {
+        mPrice = price;
     }
 
-    public String getMLink() {
+    public String getLink() {
         return mLink;
     }
 
-    public void setMLink(String mLink) {
-        this.mLink = mLink;
+    public void setLink(String link) {
+        this.mLink = link;
     }
 
-    public String getMId() {
+    public String getId() {
         return mId;
     }
 
-    public void setMId(String mId) {
-        this.mId = mId;
+    public void setId(String id) {
+        this.mId = id;
     }
 }
