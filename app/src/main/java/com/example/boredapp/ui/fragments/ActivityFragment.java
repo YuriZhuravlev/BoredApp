@@ -42,7 +42,7 @@ public class ActivityFragment extends Fragment {
     private EditText mEtInputParticipants;
     private CheckBox mCbPrice;
     private TextView mTvActivityEn;
-    private TextView mTvActivityRu;
+//    private TextView mTvActivityRu;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,14 +64,15 @@ public class ActivityFragment extends Fragment {
         mEtInputParticipants = v.findViewById(R.id.et_input_participants);
         mCbPrice = v.findViewById(R.id.cb_price);
         mTvActivityEn = v.findViewById(R.id.tv_activity_en);
-        mTvActivityRu = v.findViewById(R.id.tv_activity_ru);
+        //mTvActivityRu = v.findViewById(R.id.tv_activity_ru);
 
         initSpinner();
     }
 
     private void initSpinner() {
         String[] typeArray = getResources().getStringArray(R.array.TypeActivity);
-        SpinnerAdapter spinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line, typeArray);
+        //SpinnerAdapter spinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line, typeArray);
+        SpinnerAdapter spinnerAdapter = new ArrayAdapter<>(getActivity(), R.layout.dropdown_item, typeArray);
 
         mSpinnerType.setAdapter(spinnerAdapter);
     }
@@ -119,7 +120,7 @@ public class ActivityFragment extends Fragment {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
                         mTvActivityEn.setVisibility(View.GONE);
-                        mTvActivityRu.setVisibility(View.GONE);
+                        //mTvActivityRu.setVisibility(View.GONE);
                         mBtnOpenLink.setVisibility(View.GONE);
                         Toast.makeText(getActivity(), throwable.getMessage().toString(), Toast.LENGTH_SHORT).show();
                     }
@@ -162,7 +163,7 @@ public class ActivityFragment extends Fragment {
                 if (mCbPrice.isChecked()) {
                     return apiService.getActivity(i, ApiUtils.PRICE_FREE);
                 } else {
-                    return apiService.getActivity();
+                    return apiService.getActivity(i);
                 }
             }
         } catch (Exception e) {

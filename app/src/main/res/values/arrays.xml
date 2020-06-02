@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="TypeActivity">
-        <item>Не выбрано</item>
-        <item>Образование</item>
-        <item>Развлечения</item>
-        <item>Социальная активность</item>
-        <item>Поделки</item>
-        <item>Благотворительность</item>
-        <item>Кулинария</item>
-        <item>Отдых</item>
-        <item>Музыка</item>
-        <item>Деловая работа</item>
+        <item>Not selected</item>
+        <item>Education</item>
+        <item>Recreational</item>
+        <item>Social</item>
+        <item>DIY</item>
+        <item>Charity</item>
+        <item>Cooking</item>
+        <item>Relaxation</item>
+        <item>Music</item>
+        <item>Busywork</item>
     </string-array>
 </resources>

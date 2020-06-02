@@ -1,10 +1,8 @@
 <resources>
-    <string name="app_name">BoredApp</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="tv_find_activity">Поиск занятия</string>
-    <string name="participants">Количество людей</string>
-    <string name="rb_price">Только бесплатные варианты</string>
-    <string name="btn_text">Мне повезёт!</string>
-    <string name="btn_open_link">Попробуй здесь</string>
+    <string name="app_name">Bored</string>
+    <string name="tv_find_activity">Find Activity</string>
+    <string name="participants">Participants</string>
+    <string name="rb_price">Only free options</string>
+    <string name="btn_text">I\'ll be lucky!</string>
+    <string name="btn_open_link">Try it here</string>
 </resources>
