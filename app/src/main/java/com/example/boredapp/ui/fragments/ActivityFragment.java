@@ -6,9 +6,13 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -21,6 +25,7 @@ import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.boredapp.MainActivity;
 import com.example.boredapp.R;
 import com.example.boredapp.model.ActivityModel;
 import com.example.boredapp.model.TypeActivity;
@@ -53,6 +58,7 @@ public class ActivityFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         super.onCreate(savedInstanceState);
     }
 
@@ -214,5 +220,28 @@ public class ActivityFragment extends Fragment {
         } else {
             return apiService.getActivity();
         }
+    }
+
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_item_theme_change: {
+                ((MainActivity) getActivity()).changeTheme();
+                break;
+            }
+            case R.id.menu_item_about: {
+                getFragmentManager().beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.fragment_container, new AboutFragment())
+                        .commit();
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

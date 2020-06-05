@@ -7,4 +7,9 @@
     <string name="btn_open_link">Try it here</string>
     <string name="tv_type">Type</string>
     <string name="dark_theme">Dark Theme</string>
+    <string name="about">About</string>
+    <string name="image_desc">image</string>
+    <string name="text_api">API: \n https://www.boredapi.com/</string>
+    <string name="text_author">My source on github: \n https://github.com/YuriZhuravlev/BoredApp</string>
+    <string name="text_main">Created by Yuri Zhuravlev</string>
 </resources>
