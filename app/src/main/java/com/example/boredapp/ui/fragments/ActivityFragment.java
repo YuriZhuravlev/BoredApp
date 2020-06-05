@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -32,6 +33,12 @@ import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 public class ActivityFragment extends Fragment {
+    private final static String TEXT_VIEW_EN = "TEXT_VIEW_EN";
+    private final static String LINK = "LINK";
+    private final static String PARTICIPANTS = "PARTICIPANTS";
+    private final static String TYPE_SELECTED = "TYPE_SELECTED";
+    private final static String IS_FREE = "IS_FREE";
+
     private BoredApi apiService = ApiUtils.getApiService();
     private String mLink = "";
     private TypeActivity mType = TypeActivity.EMPTY;
@@ -54,8 +61,41 @@ public class ActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_activity, container, false);
         initUI(v);
+        if (savedInstanceState != null)
+            loadInstanceState(savedInstanceState);
         return v;
     }
+
+    private void loadInstanceState(Bundle savedInstanceState) {
+        mEtInputParticipants.setText(savedInstanceState.getString(PARTICIPANTS));
+        mSpinnerType.setSelection(savedInstanceState.getInt(TYPE_SELECTED));
+        mCbPrice.setSelected(savedInstanceState.getBoolean(IS_FREE));
+        if (savedInstanceState.containsKey(TEXT_VIEW_EN)) {
+            mTvActivityEn.setText(savedInstanceState.getString(TEXT_VIEW_EN));
+            mTvActivityEn.setVisibility(View.VISIBLE);
+            if (savedInstanceState.containsKey(LINK)) {
+                mLink = savedInstanceState.getString(LINK);
+                mBtnOpenLink.setVisibility(View.VISIBLE);
+            }
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putString(PARTICIPANTS, mEtInputParticipants.getText().toString());
+        outState.putInt(TYPE_SELECTED, mSpinnerType.getSelectedItemPosition());
+        outState.putBoolean(IS_FREE, mCbPrice.isChecked());
+        if (mTvActivityEn.getVisibility() == View.VISIBLE) {
+            String text = mTvActivityEn.getText().toString();
+            outState.putString(TEXT_VIEW_EN, text);
+            if (mBtnOpenLink.getVisibility() == View.VISIBLE) {
+                outState.putString(LINK, mLink);
+            }
+        }
+        super.onSaveInstanceState(outState);
+    }
+
+
 
     private void initUI(View v) {
         mBtnDo = v.findViewById(R.id.btn_do);

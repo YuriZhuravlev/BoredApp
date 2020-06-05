@@ -8,17 +8,20 @@
 
     <TextView
         android:id="@+id/tv_find_activity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/normal_margin"
-        android:textSize="18dp"
-        android:textStyle="bold"
-        android:textAllCaps="true"
-        android:textColor="@color/colorText"
+
         android:text="@string/tv_find_activity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        style="@style/header_text_view" />
+
+    <TextView
+        android:id="@+id/tv_type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="@string/tv_type"
+        app:layout_constraintTop_toBottomOf="@id/tv_find_activity"/>
 
     <Spinner
         android:id="@+id/spinner_type"
@@ -27,7 +30,7 @@
         android:layout_margin="@dimen/normal_margin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_find_activity"
+        app:layout_constraintTop_toBottomOf="@id/tv_type"
         tools:listitem="@tools:sample/cities" />
 
     <EditText
@@ -37,7 +40,7 @@
         android:layout_margin="@dimen/normal_margin"
         android:gravity="center"
         android:hint="@string/participants"
-        android:textColor="@color/colorText"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/spinner_type" />
@@ -48,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/normal_margin"
         android:text="@string/rb_price"
-        android:textColor="@color/colorText"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_input_participants" />
@@ -68,7 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/normal_margin"
         android:text="@string/btn_text"
-        android:textColor="@color/colorText"
+
         app:layout_constraintTop_toBottomOf="@+id/view" />
 
     <ScrollView
@@ -85,23 +88,14 @@
             android:orientation="vertical">
 
             <TextView
-                android:textColor="@color/colorText"
-                android:textSize="16dp"
+
+                android:textSize="16sp"
                 android:id="@+id/tv_activity_en"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textIsSelectable="true"
                 android:layout_margin="@dimen/normal_margin"
                 tools:text="Сделать приложение по открытому API" />
-<!--
-            <TextView
-                android:id="@+id/tv_activity_ru"
-                android:visibility="gone"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textIsSelectable="true"
-                android:layout_margin="@dimen/normal_margin"
-                tools:text="Сделать приложение по открытому API" />-->
         </LinearLayout>
     </ScrollView>
 
@@ -113,5 +107,4 @@
         android:text="@string/btn_open_link"
         android:layout_margin="@dimen/normal_margin"
         app:layout_constraintBottom_toBottomOf="parent"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

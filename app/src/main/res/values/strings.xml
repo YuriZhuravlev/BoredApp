@@ -5,4 +5,6 @@
     <string name="rb_price">Only free options</string>
     <string name="btn_text">I\'ll be lucky!</string>
     <string name="btn_open_link">Try it here</string>
+    <string name="tv_type">Type</string>
+    <string name="dark_theme">Dark Theme</string>
 </resources>

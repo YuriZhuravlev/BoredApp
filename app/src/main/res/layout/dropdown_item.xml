@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@android:id/text1"
     style="?android:attr/dropDownItemStyle"
-    android:textColor="@color/colorText"
     tools:text="Name Item"
     android:textAppearance="?android:attr/textAppearanceLargePopupMenu"
     android:singleLine="true"
