@@ -9,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toolbar;
 
+import com.example.boredapp.MainActivity;
 import com.example.boredapp.R;
 
 
@@ -33,7 +33,8 @@ public class AboutFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
+        ((MainActivity) getActivity()).getToolBar().setDisplayHomeAsUpEnabled(true);
+        ((MainActivity) getActivity()).getToolBar().setTitle(R.string.about);
         try {
             if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO) {
                 mImage.setImageDrawable(getResources().getDrawable(R.drawable.img_833r_c0de_light));

@@ -137,6 +137,8 @@ public class ActivityFragment extends Fragment {
                 openWeb();
             }
         });
+        ((MainActivity) getActivity()).getToolBar().setDisplayHomeAsUpEnabled(false);
+        ((MainActivity) getActivity()).getToolBar().setTitle(R.string.app_name);
         super.onResume();
     }
 

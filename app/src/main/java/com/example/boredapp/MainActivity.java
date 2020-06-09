@@ -1,8 +1,11 @@
 package com.example.boredapp;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.appcompat.widget.Toolbar;
+
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -25,6 +28,15 @@ public class MainActivity extends AppCompatActivity {
                     .replace(R.id.fragment_container,new ActivityFragment())
                     .commit();
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
+    }
+    public ActionBar getToolBar() {
+        return getSupportActionBar();
     }
 
     public void changeTheme() {
