@@ -40,10 +40,12 @@
         android:layout_margin="@dimen/normal_margin"
         android:gravity="center"
         android:hint="@string/participants"
-
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinner_type" />
+        app:layout_constraintTop_toBottomOf="@id/spinner_type"
+        android:autofillHints=""
+        android:inputType="numberDecimal" />
 
     <CheckBox
         android:id="@+id/cb_price"

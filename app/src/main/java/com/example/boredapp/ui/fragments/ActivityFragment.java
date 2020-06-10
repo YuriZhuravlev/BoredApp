@@ -117,10 +117,24 @@ public class ActivityFragment extends Fragment {
 
     private void initSpinner() {
         String[] typeArray = getResources().getStringArray(R.array.TypeActivity);
-        //SpinnerAdapter spinnerAdapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_dropdown_item_1line, typeArray);
         SpinnerAdapter spinnerAdapter = new ArrayAdapter<>(getActivity(), R.layout.dropdown_item, typeArray);
 
         mSpinnerType.setAdapter(spinnerAdapter);
+        mSpinnerType.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0) {
+                    mEtInputParticipants.setVisibility(View.INVISIBLE);
+                } else {
+                    mEtInputParticipants.setVisibility(View.VISIBLE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     @Override
@@ -187,11 +201,11 @@ public class ActivityFragment extends Fragment {
         String type = mType.getLowerCase()[typeId];
         try {
             int i = Integer.parseInt(mEtInputParticipants.getText().toString());
-            if (i > 0) {
+            if (mEtInputParticipants.getVisibility() == View.VISIBLE && i > 0) {
                 if (mCbPrice.isChecked()) {
                     return apiService.getActivity(type, i, ApiUtils.PRICE_FREE);
                 } else {
-                    return apiService.getActivity(type);
+                    return apiService.getActivity(type, i);
                 }
             }
         } catch (Exception e) {
@@ -207,7 +221,7 @@ public class ActivityFragment extends Fragment {
     private Single<ActivityModel> checkFieldsWithoutType() {
         try {
             int i = Integer.parseInt(mEtInputParticipants.getText().toString());
-            if (i > 0) {
+            if (mEtInputParticipants.getVisibility() == View.VISIBLE &&  i > 0) {
                 if (mCbPrice.isChecked()) {
                     return apiService.getActivity(i, ApiUtils.PRICE_FREE);
                 } else {
