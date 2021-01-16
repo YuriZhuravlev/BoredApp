@@ -1,16 +1,11 @@
 package com.example.boredapp;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
-import com.example.boredapp.ui.fragments.AboutFragment;
 import com.example.boredapp.ui.fragments.ActivityFragment;
 import com.example.boredapp.utils.SharedPreferenceHelper;
 
@@ -25,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container,new ActivityFragment())
+                    .replace(R.id.fragment_container, new ActivityFragment())
                     .commit();
         }
     }
@@ -35,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         onBackPressed();
         return true;
     }
+
     public ActionBar getToolBar() {
         return getSupportActionBar();
     }

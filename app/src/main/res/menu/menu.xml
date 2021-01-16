@@ -2,6 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/menu_item_help"
+        android:icon="@drawable/ic_help"
+        android:title="@string/help"
+        app:showAsAction="always"/>
+    <item
         android:id="@+id/menu_item_about"
         android:icon="@drawable/ic_about"
         android:title="@string/about"
@@ -10,5 +15,5 @@
         android:id="@+id/menu_item_theme_change"
         android:icon="@drawable/ic_dark_theme"
         android:title="@string/dark_theme"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 </menu>

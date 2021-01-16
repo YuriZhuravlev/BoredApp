@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -29,8 +28,10 @@ import com.example.boredapp.MainActivity;
 import com.example.boredapp.R;
 import com.example.boredapp.model.ActivityModel;
 import com.example.boredapp.model.TypeActivity;
+import com.example.boredapp.ui.fragments.help.HelpFragment;
 import com.example.boredapp.utils.ApiUtils;
 import com.example.boredapp.utils.BoredApi;
+import com.example.boredapp.utils.SharedPreferenceHelper;
 
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -44,9 +45,9 @@ public class ActivityFragment extends Fragment {
     private final static String TYPE_SELECTED = "TYPE_SELECTED";
     private final static String IS_FREE = "IS_FREE";
 
-    private BoredApi apiService = ApiUtils.getApiService();
+    private final BoredApi apiService = ApiUtils.getApiService();
     private String mLink = "";
-    private TypeActivity mType = TypeActivity.EMPTY;
+    private final TypeActivity mType = TypeActivity.EMPTY;
 
     private Button mBtnDo;
     private Button mBtnOpenLink;
@@ -59,6 +60,13 @@ public class ActivityFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         setHasOptionsMenu(true);
+        if (!SharedPreferenceHelper.getShowTutorial(getActivity())) {
+            SharedPreferenceHelper.setShowTutorial(getActivity());
+            getFragmentManager().beginTransaction()
+                    .addToBackStack(null)
+                    .replace(R.id.fragment_container, new HelpFragment())
+                    .commit();
+        }
         super.onCreate(savedInstanceState);
     }
 
@@ -100,7 +108,6 @@ public class ActivityFragment extends Fragment {
         }
         super.onSaveInstanceState(outState);
     }
-
 
 
     private void initUI(View v) {
@@ -182,9 +189,8 @@ public class ActivityFragment extends Fragment {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
                         mTvActivityEn.setVisibility(View.GONE);
-                        //mTvActivityRu.setVisibility(View.GONE);
                         mBtnOpenLink.setVisibility(View.GONE);
-                        Toast.makeText(getActivity(), throwable.getMessage().toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), throwable.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -221,7 +227,7 @@ public class ActivityFragment extends Fragment {
     private Single<ActivityModel> checkFieldsWithoutType() {
         try {
             int i = Integer.parseInt(mEtInputParticipants.getText().toString());
-            if (mEtInputParticipants.getVisibility() == View.VISIBLE &&  i > 0) {
+            if (mEtInputParticipants.getVisibility() == View.VISIBLE && i > 0) {
                 if (mCbPrice.isChecked()) {
                     return apiService.getActivity(i, ApiUtils.PRICE_FREE);
                 } else {
@@ -247,6 +253,13 @@ public class ActivityFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.menu_item_help: {
+                getFragmentManager().beginTransaction()
+                        .addToBackStack(null)
+                        .replace(R.id.fragment_container, new HelpFragment())
+                        .commit();
+                break;
+            }
             case R.id.menu_item_theme_change: {
                 ((MainActivity) getActivity()).changeTheme();
                 break;
@@ -256,6 +269,7 @@ public class ActivityFragment extends Fragment {
                         .addToBackStack(null)
                         .replace(R.id.fragment_container, new AboutFragment())
                         .commit();
+                break;
             }
         }
         return super.onOptionsItemSelected(item);
