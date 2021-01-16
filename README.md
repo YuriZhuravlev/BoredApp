@@ -1,4 +1,5 @@
 # BoredApp
+![image](https://github.com/YuriZhuravlev/BoredApp/blob/master/app/src/main/res/drawable/page0.jpg)
 ### EN
 Simple client-application with API https://www.boredapi.com/  
 Use Retrofit2+RxJava2

@@ -9,8 +9,8 @@ android {
         applicationId "com.example.boredapp"
         minSdkVersion 21
         targetSdkVersion 29
-        versionCode 3
-        versionName "1.2"
+        versionCode 4
+        versionName "1.3.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -29,7 +29,7 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.viewpager2:viewpager2:1.0.0'
-    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'com.google.android.material:material:1.2.1'
     testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
