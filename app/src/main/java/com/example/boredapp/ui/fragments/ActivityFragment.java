@@ -158,8 +158,8 @@ public class ActivityFragment extends Fragment {
                 openWeb();
             }
         });
-        ((MainActivity) getActivity()).getToolBar().setDisplayHomeAsUpEnabled(false);
-        ((MainActivity) getActivity()).getToolBar().setTitle(R.string.app_name);
+        //((MainActivity) getActivity()).getToolBar().setDisplayHomeAsUpEnabled(false);
+        //((MainActivity) getActivity()).getToolBar().setTitle(R.string.app_name);
         super.onResume();
     }
 
@@ -244,34 +244,34 @@ public class ActivityFragment extends Fragment {
         }
     }
 
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.menu, menu);
-        super.onCreateOptionsMenu(menu, inflater);
-    }
+//    @Override
+//    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+//        inflater.inflate(R.menu.menu, menu);
+//        super.onCreateOptionsMenu(menu, inflater);
+//    }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_item_help: {
-                getFragmentManager().beginTransaction()
-                        .addToBackStack(null)
-                        .replace(R.id.fragment_container, new HelpFragment())
-                        .commit();
-                break;
-            }
-            case R.id.menu_item_theme_change: {
-                ((MainActivity) getActivity()).changeTheme();
-                break;
-            }
-            case R.id.menu_item_about: {
-                getFragmentManager().beginTransaction()
-                        .addToBackStack(null)
-                        .replace(R.id.fragment_container, new AboutFragment())
-                        .commit();
-                break;
-            }
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.menu_item_help: {
+//                getFragmentManager().beginTransaction()
+//                        .addToBackStack(null)
+//                        .replace(R.id.fragment_container, new HelpFragment())
+//                        .commit();
+//                break;
+//            }
+//            case R.id.menu_item_theme_change: {
+//                ((MainActivity) getActivity()).changeTheme();
+//                break;
+//            }
+//            case R.id.menu_item_about: {
+//                getFragmentManager().beginTransaction()
+//                        .addToBackStack(null)
+//                        .replace(R.id.fragment_container, new AboutFragment())
+//                        .commit();
+//                break;
+//            }
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 }

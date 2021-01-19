@@ -33,16 +33,16 @@ public class AboutFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        ((MainActivity) getActivity()).getToolBar().setDisplayHomeAsUpEnabled(true);
-        ((MainActivity) getActivity()).getToolBar().setTitle(R.string.about);
-        try {
-            if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO) {
-                mImage.setImageDrawable(getResources().getDrawable(R.drawable.img_833r_c0de_light));
-            } else {
-                mImage.setImageDrawable(getResources().getDrawable(R.drawable.img_833r_c0de));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        ((MainActivity) getActivity()).getToolBar().setDisplayHomeAsUpEnabled(true);
+//        ((MainActivity) getActivity()).getToolBar().setTitle(R.string.about);
+//        try {
+//            if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO) {
+//                mImage.setImageDrawable(getResources().getDrawable(R.drawable.img_833r_c0de_light));
+//            } else {
+//                mImage.setImageDrawable(getResources().getDrawable(R.drawable.img_833r_c0de));
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 }

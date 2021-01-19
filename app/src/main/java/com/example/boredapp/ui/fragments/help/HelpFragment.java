@@ -54,8 +54,8 @@ public class HelpFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        ((MainActivity) getActivity()).getToolBar().setDisplayHomeAsUpEnabled(true);
-        ((MainActivity) getActivity()).getToolBar().setTitle("Info");
+//        ((MainActivity) getActivity()).getToolBar().setDisplayHomeAsUpEnabled(true);
+//        ((MainActivity) getActivity()).getToolBar().setTitle("Info");
     }
 
     @Override
