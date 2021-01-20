@@ -20,4 +20,5 @@
     <color name="colorPrimary">@color/nord1</color>
     <color name="colorPrimaryDark">@color/nord0</color>
     <color name="colorAccent">@color/nord9</color>
+    <color name="colorTextTitle">#111111</color>
 </resources>

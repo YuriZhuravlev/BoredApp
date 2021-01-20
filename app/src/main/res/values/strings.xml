@@ -16,4 +16,5 @@
     <string name="notes">Notes</string>
     <string name="my_notes">My notes</string>
     <string name="change_theme">Change theme</string>
+    <string name="add">Add note</string>
 </resources>

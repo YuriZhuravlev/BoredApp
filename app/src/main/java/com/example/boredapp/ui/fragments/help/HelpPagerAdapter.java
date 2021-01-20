@@ -17,7 +17,7 @@ public class HelpPagerAdapter extends RecyclerView.Adapter<PagerViewHolder> {
     @NonNull
     @Override
     public PagerViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new PagerViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.page_item, parent, false));
+        return new PagerViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_page, parent, false));
     }
 
     @Override

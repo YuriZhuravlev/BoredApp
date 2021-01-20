@@ -35,7 +35,7 @@ class AppDrawer(activity: MainActivity) {
                         PrimaryDrawerItem().withIdentifier(102)
                                 .withIconTintingEnabled(true)
                                 .withName(R.string.my_notes)
-                                .withIcon(R.drawable.ic_launcher_background)
+                                .withIcon(R.drawable.ic_notes)
                                 .withSelectable(false),
                         PrimaryDrawerItem().withIdentifier(103)
                                 .withIconTintingEnabled(true)
