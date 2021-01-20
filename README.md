@@ -20,4 +20,4 @@ You can search for a completely random activity, as well as choose from a list o
 1. Нормальная иконка
 2. Добавить заметки (заголовок - результат, комментарий editable, ссылка если есть + добавляема, завершенность)
 3. Поделиться в соцсети
-4. MaterialDrawer - выдвижное меню
+4. MaterialDrawer - выдвижное меню +++

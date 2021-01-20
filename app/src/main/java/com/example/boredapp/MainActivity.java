@@ -4,6 +4,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 
@@ -25,9 +26,7 @@ public class MainActivity extends AppCompatActivity {
         mToolBar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mToolBar);
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_container, new ActivityFragment())
-                    .commit();
+            replaceFragment(new ActivityFragment(), false);
         }
         mAppDrawer = new AppDrawer(this);
     }
@@ -40,6 +39,23 @@ public class MainActivity extends AppCompatActivity {
 
     public Toolbar getToolBar() {
         return mToolBar;
+    }
+
+    public void replaceFragment(Fragment fragment) {
+        replaceFragment(fragment, true);
+    }
+
+    public void replaceFragment(Fragment fragment, Boolean addStack) {
+        if (addStack) {
+            getSupportFragmentManager().beginTransaction()
+                    .addToBackStack(null)
+                    .replace(R.id.fragment_container, fragment)
+                    .commit();
+        } else {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragment_container, fragment)
+                    .commit();
+        }
     }
 
     public void changeTheme() {

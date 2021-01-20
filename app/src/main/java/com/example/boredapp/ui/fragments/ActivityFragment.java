@@ -4,14 +4,9 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -23,8 +18,6 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.boredapp.MainActivity;
 import com.example.boredapp.R;
 import com.example.boredapp.model.ActivityModel;
 import com.example.boredapp.model.TypeActivity;
@@ -32,7 +25,6 @@ import com.example.boredapp.ui.fragments.help.HelpFragment;
 import com.example.boredapp.utils.ApiUtils;
 import com.example.boredapp.utils.BoredApi;
 import com.example.boredapp.utils.SharedPreferenceHelper;
-
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
@@ -55,7 +47,6 @@ public class ActivityFragment extends Fragment {
     private EditText mEtInputParticipants;
     private CheckBox mCbPrice;
     private TextView mTvActivityEn;
-//    private TextView mTvActivityRu;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -96,14 +87,16 @@ public class ActivityFragment extends Fragment {
 
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
-        outState.putString(PARTICIPANTS, mEtInputParticipants.getText().toString());
-        outState.putInt(TYPE_SELECTED, mSpinnerType.getSelectedItemPosition());
-        outState.putBoolean(IS_FREE, mCbPrice.isChecked());
-        if (mTvActivityEn.getVisibility() == View.VISIBLE) {
-            String text = mTvActivityEn.getText().toString();
-            outState.putString(TEXT_VIEW_EN, text);
-            if (mBtnOpenLink.getVisibility() == View.VISIBLE) {
-                outState.putString(LINK, mLink);
+        if (mCbPrice != null && mSpinnerType != null && mEtInputParticipants != null) {
+            outState.putString(PARTICIPANTS, mEtInputParticipants.getText().toString());
+            outState.putInt(TYPE_SELECTED, mSpinnerType.getSelectedItemPosition());
+            outState.putBoolean(IS_FREE, mCbPrice.isChecked());
+            if (mTvActivityEn.getVisibility() == View.VISIBLE) {
+                String text = mTvActivityEn.getText().toString();
+                outState.putString(TEXT_VIEW_EN, text);
+                if (mBtnOpenLink.getVisibility() == View.VISIBLE) {
+                    outState.putString(LINK, mLink);
+                }
             }
         }
         super.onSaveInstanceState(outState);
@@ -117,7 +110,6 @@ public class ActivityFragment extends Fragment {
         mEtInputParticipants = v.findViewById(R.id.et_input_participants);
         mCbPrice = v.findViewById(R.id.cb_price);
         mTvActivityEn = v.findViewById(R.id.tv_activity_en);
-        //mTvActivityRu = v.findViewById(R.id.tv_activity_ru);
 
         initSpinner();
     }
@@ -158,8 +150,7 @@ public class ActivityFragment extends Fragment {
                 openWeb();
             }
         });
-        //((MainActivity) getActivity()).getToolBar().setDisplayHomeAsUpEnabled(false);
-        //((MainActivity) getActivity()).getToolBar().setTitle(R.string.app_name);
+        getActivity().setTitle(R.string.app_name);
         super.onResume();
     }
 
@@ -244,34 +235,4 @@ public class ActivityFragment extends Fragment {
         }
     }
 
-//    @Override
-//    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-//        inflater.inflate(R.menu.menu, menu);
-//        super.onCreateOptionsMenu(menu, inflater);
-//    }
-
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.menu_item_help: {
-//                getFragmentManager().beginTransaction()
-//                        .addToBackStack(null)
-//                        .replace(R.id.fragment_container, new HelpFragment())
-//                        .commit();
-//                break;
-//            }
-//            case R.id.menu_item_theme_change: {
-//                ((MainActivity) getActivity()).changeTheme();
-//                break;
-//            }
-//            case R.id.menu_item_about: {
-//                getFragmentManager().beginTransaction()
-//                        .addToBackStack(null)
-//                        .replace(R.id.fragment_container, new AboutFragment())
-//                        .commit();
-//                break;
-//            }
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
 }

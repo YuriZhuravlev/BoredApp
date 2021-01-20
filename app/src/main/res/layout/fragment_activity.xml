@@ -8,8 +8,7 @@
 
     <TextView
         android:id="@+id/tv_find_activity"
-
-        android:text="@string/tv_find_activity"
+        android:text="@string/find_activity"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -90,7 +89,6 @@
             android:orientation="vertical">
 
             <TextView
-
                 android:textSize="16sp"
                 android:id="@+id/tv_activity_en"
                 android:layout_width="match_parent"

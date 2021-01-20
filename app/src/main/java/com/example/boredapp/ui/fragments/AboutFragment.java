@@ -1,16 +1,12 @@
 package com.example.boredapp.ui.fragments;
 
 import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
-import com.example.boredapp.MainActivity;
 import com.example.boredapp.R;
 
 
@@ -33,16 +29,17 @@ public class AboutFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-//        ((MainActivity) getActivity()).getToolBar().setDisplayHomeAsUpEnabled(true);
-//        ((MainActivity) getActivity()).getToolBar().setTitle(R.string.about);
-//        try {
-//            if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO) {
+        getActivity().setTitle(R.string.about);
+        try {
+            if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO) {
+                mImage.setImageResource(R.drawable.img_833r_c0de_light);
 //                mImage.setImageDrawable(getResources().getDrawable(R.drawable.img_833r_c0de_light));
-//            } else {
+            } else {
+                mImage.setImageResource(R.drawable.img_833r_c0de);
 //                mImage.setImageDrawable(getResources().getDrawable(R.drawable.img_833r_c0de));
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
