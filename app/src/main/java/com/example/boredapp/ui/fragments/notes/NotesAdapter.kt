@@ -17,7 +17,7 @@ class NotesAdapter(list: List<NoteModel>) : RecyclerView.Adapter<NotesViewHolder
     }
 
     override fun onBindViewHolder(holder: NotesViewHolder, position: Int) {
-        holder.title.text = mList[position].getTitle()
+        holder.title.text = mList[position].title
         holder.info.text = mList[position].getInfo()
         holder.itemView.setOnClickListener {
             MainActivity.getActivity().replaceFragment(NoteFragment(mList[position]))

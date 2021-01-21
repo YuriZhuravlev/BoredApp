@@ -8,6 +8,7 @@
     <TextView
         android:id="@+id/note_title"
         style="@style/item_note_title"
+        android:textSize="25sp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/normal_margin"

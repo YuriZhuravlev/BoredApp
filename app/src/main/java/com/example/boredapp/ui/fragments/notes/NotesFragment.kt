@@ -1,11 +1,19 @@
 package com.example.boredapp.ui.fragments.notes
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.example.boredapp.MainActivity
 import com.example.boredapp.R
+import com.example.boredapp.database.Storage
 import com.example.boredapp.model.NoteModel
+import io.reactivex.Single
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.functions.Consumer
+import io.reactivex.schedulers.Schedulers
 
 class NotesFragment : Fragment() {
     private lateinit var mRecyclerView: RecyclerView
@@ -25,9 +33,19 @@ class NotesFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         activity?.title = getString(R.string.notes)
-        mAdapter = NotesAdapter(listOf(NoteModel("Test Model", "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit"),
-                NoteModel("Small text", "Lorem Ipsum")))
-        mRecyclerView.adapter = mAdapter
+        initRecyclerView()
+    }
+
+    @SuppressLint("CheckResult")
+    private fun initRecyclerView() {
+        val storage = Storage.getStorage()
+        storage.notesDao.getNotes()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(Consumer {
+                    mAdapter = NotesAdapter(it)
+                    mRecyclerView.adapter = mAdapter
+                })
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
