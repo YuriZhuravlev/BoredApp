@@ -4,8 +4,10 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -21,13 +23,19 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.boredapp.MainActivity;
 import com.example.boredapp.R;
 import com.example.boredapp.model.ActivityModel;
+import com.example.boredapp.model.NoteModel;
 import com.example.boredapp.model.TypeActivity;
 import com.example.boredapp.ui.fragments.help.HelpFragment;
+import com.example.boredapp.ui.fragments.note.NoteFragment;
 import com.example.boredapp.utils.ApiUtils;
 import com.example.boredapp.utils.BoredApi;
 import com.example.boredapp.utils.SharedPreferenceHelper;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
@@ -50,6 +58,7 @@ public class ActivityFragment extends Fragment {
     private EditText mEtInputParticipants;
     private CheckBox mCbPrice;
     private TextView mTvActivityEn;
+    private FloatingActionButton mBtnSaveNote;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -113,6 +122,7 @@ public class ActivityFragment extends Fragment {
         mEtInputParticipants = v.findViewById(R.id.et_input_participants);
         mCbPrice = v.findViewById(R.id.cb_price);
         mTvActivityEn = v.findViewById(R.id.tv_activity_en);
+        mBtnSaveNote = v.findViewById(R.id.btn_create_note);
 
         initSpinner();
     }
@@ -153,6 +163,12 @@ public class ActivityFragment extends Fragment {
                 openWeb();
             }
         });
+        mBtnSaveNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createNote();
+            }
+        });
         getActivity().setTitle(R.string.app_name);
         super.onResume();
     }
@@ -172,6 +188,7 @@ public class ActivityFragment extends Fragment {
                     public void accept(ActivityModel activityModel) throws Exception {
                         mTvActivityEn.setVisibility(View.VISIBLE);
                         mTvActivityEn.setText(activityModel.getActivity());
+                        mBtnSaveNote.setVisibility(View.VISIBLE);
                         if (activityModel.getLink() != null && !activityModel.getLink().isEmpty()) {
                             mLink = activityModel.getLink();
                             mBtnOpenLink.setVisibility(View.VISIBLE);
@@ -183,6 +200,7 @@ public class ActivityFragment extends Fragment {
                     @Override
                     public void accept(Throwable throwable) throws Exception {
                         mTvActivityEn.setVisibility(View.GONE);
+                        mBtnSaveNote.setVisibility(View.GONE);
                         mBtnOpenLink.setVisibility(View.GONE);
                         Toast.makeText(getActivity(), throwable.getMessage(), Toast.LENGTH_SHORT).show();
                     }
@@ -246,15 +264,21 @@ public class ActivityFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_item_help: {
-                getFragmentManager().beginTransaction()
-                        .addToBackStack(null)
-                        .replace(R.id.fragment_container, new HelpFragment())
-                        .commit();
-                break;
-            }
+        if (item.getItemId() == R.id.menu_item_help) {
+            getFragmentManager().beginTransaction()
+                    .addToBackStack(null)
+                    .replace(R.id.fragment_container, new HelpFragment())
+                    .commit();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void createNote() {
+        NoteModel note = new NoteModel();
+        note.setTitle(mTvActivityEn.getText().toString());
+        if (mBtnOpenLink.getVisibility() == View.VISIBLE) {
+            note.setLink(mLink);
+        }
+        MainActivity.getActivity().replaceFragment(new NoteFragment(note, true));
     }
 }

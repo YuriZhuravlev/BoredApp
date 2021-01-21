@@ -15,10 +15,11 @@ import com.example.boredapp.utils.getTime
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class NoteFragment(note: NoteModel) : Fragment() {
+class NoteFragment(note: NoteModel, isCreated: Boolean = false) : Fragment() {
     lateinit var mTitle: TextView
     lateinit var mText: EditText
     val mNote = note
+    var mIsCreated = isCreated
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val v = inflater.inflate(R.layout.fragment_note, container, false)
@@ -29,6 +30,9 @@ class NoteFragment(note: NoteModel) : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        if (mIsCreated) {
+            mTitle.requestFocus()
+        }
         mTitle.text = mNote.title
         mText.setText(mNote.text)
     }
@@ -40,11 +44,21 @@ class NoteFragment(note: NoteModel) : Fragment() {
 
     @SuppressLint("CheckResult")
     private fun save() {
-        mNote.text = mText.text.toString()
-        mNote.time = getTime()
-        Storage.getStorage().notesDao.updateNote(mNote)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe {  }
+        if (mTitle.text.isNotEmpty()) {
+            val title = mTitle.text.toString()
+            val text = mText.text.toString()
+            if (!mIsCreated && mNote.title.equals(title) && mNote.text.equals(text)) {
+                return
+            }
+            mNote.title = title
+            mNote.text = text
+            mNote.time = getTime()
+            if (mIsCreated) {
+                mIsCreated = false
+                Storage.getStorage().insertNote(mNote) {}
+            } else {
+                Storage.getStorage().updateNote(mNote) {}
+            }
+        }
     }
 }

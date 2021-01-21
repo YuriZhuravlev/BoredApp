@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <EditText
         android:id="@+id/note_title"
         style="@style/item_note_title"
         android:textSize="25sp"

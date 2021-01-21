@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        mActivity = this;
         mTheme = SharedPreferenceHelper.getSettingsTheme(this);
         AppCompatDelegate.setDefaultNightMode(mTheme);
         super.onCreate(savedInstanceState);
@@ -34,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
             replaceFragment(new ActivityFragment(), false);
         }
         mAppDrawer = new AppDrawer(this);
-        mActivity = this;
     }
 
     @Override

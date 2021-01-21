@@ -10,6 +10,7 @@ import com.example.boredapp.MainActivity
 import com.example.boredapp.R
 import com.example.boredapp.database.Storage
 import com.example.boredapp.model.NoteModel
+import com.example.boredapp.ui.fragments.note.NoteFragment
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
@@ -39,13 +40,11 @@ class NotesFragment : Fragment() {
     @SuppressLint("CheckResult")
     private fun initRecyclerView() {
         val storage = Storage.getStorage()
-        storage.notesDao.getNotes()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(Consumer {
-                    mAdapter = NotesAdapter(it)
-                    mRecyclerView.adapter = mAdapter
-                })
+
+        storage.getNotes {
+            mAdapter = NotesAdapter(it)
+            mRecyclerView.adapter = mAdapter
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -56,7 +55,7 @@ class NotesFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.notes_menu_item_add -> {
-                //TODO Add note
+                MainActivity.getActivity().replaceFragment(NoteFragment(NoteModel(), true))
             }
         }
         return super.onOptionsItemSelected(item)
