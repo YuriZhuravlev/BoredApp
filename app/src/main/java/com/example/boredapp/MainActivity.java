@@ -16,6 +16,11 @@ public class MainActivity extends AppCompatActivity {
     private int mTheme;
     private Toolbar mToolBar;
     private AppDrawer mAppDrawer;
+    private static MainActivity mActivity;
+
+    public static MainActivity getActivity() {
+        return mActivity;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
             replaceFragment(new ActivityFragment(), false);
         }
         mAppDrawer = new AppDrawer(this);
+        mActivity = this;
     }
 
     @Override

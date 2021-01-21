@@ -3,4 +3,5 @@
     <dimen name="normal_margin">8dp</dimen>
     <dimen name="small_margin">4dp</dimen>
     <dimen name="progress_bar_height">10dp</dimen>
+    <dimen name="height_divider">2dp</dimen>
 </resources>

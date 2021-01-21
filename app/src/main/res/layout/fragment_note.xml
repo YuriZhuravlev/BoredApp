@@ -3,27 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="@dimen/normal_margin">
+    android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/item_note_title"
+        android:id="@+id/note_title"
         style="@style/item_note_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/normal_margin"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="Learn Kotlin" />
-
-    <TextView
-        android:id="@+id/item_note_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/item_note_title"
-        tools:text="Learn Kotlin in android development" />
+        tools:text="Title" />
 
     <View
+        android:id="@+id/note_divider"
         style="@style/divider"
         android:layout_width="match_parent"
         android:background="@color/material_drawer_divider"
-        app:layout_constraintTop_toBottomOf="@id/item_note_info" />
+        app:layout_constraintTop_toBottomOf="@id/note_title" />
+
+    <EditText
+        android:id="@+id/note_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="top|left"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/note_divider" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
