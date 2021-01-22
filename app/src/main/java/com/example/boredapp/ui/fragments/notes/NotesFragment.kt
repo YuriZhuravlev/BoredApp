@@ -19,6 +19,7 @@ import io.reactivex.schedulers.Schedulers
 class NotesFragment : Fragment() {
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mAdapter: NotesAdapter
+    private lateinit var mMenuDelete: MenuItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
@@ -42,18 +43,22 @@ class NotesFragment : Fragment() {
         val storage = Storage.getStorage()
 
         storage.getNotes {
-            mAdapter = NotesAdapter(it)
+            mAdapter = NotesAdapter(it, mMenuDelete)
             mRecyclerView.adapter = mAdapter
         }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.notes_menu, menu)
+        mMenuDelete = menu.findItem(R.id.notes_menu_item_delete)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.notes_menu_item_delete -> {
+                Storage.getStorage().deleteNotes(mAdapter.mListDeleted) { mAdapter.listDeleted() }
+            }
             R.id.notes_menu_item_add -> {
                 MainActivity.getActivity().replaceFragment(NoteFragment(NoteModel(), true))
             }

@@ -4,10 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -23,7 +21,6 @@ import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.boredapp.MainActivity;
 import com.example.boredapp.R;
 import com.example.boredapp.model.ActivityModel;
@@ -35,11 +32,12 @@ import com.example.boredapp.utils.ApiUtils;
 import com.example.boredapp.utils.BoredApi;
 import com.example.boredapp.utils.SharedPreferenceHelper;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import io.reactivex.Single;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
+
+import static com.example.boredapp.utils.FunsKt.openWeb;
 
 public class ActivityFragment extends Fragment {
     private final static String TEXT_VIEW_EN = "TEXT_VIEW_EN";
@@ -160,7 +158,7 @@ public class ActivityFragment extends Fragment {
         mBtnOpenLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openWeb();
+                openWeb(mLink);
             }
         });
         mBtnSaveNote.setOnClickListener(new View.OnClickListener() {
@@ -173,10 +171,7 @@ public class ActivityFragment extends Fragment {
         super.onResume();
     }
 
-    private void openWeb() {
-        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(mLink));
-        startActivity(intent);
-    }
+
 
     @SuppressLint("CheckResult")
     private void clickBtnDo() {

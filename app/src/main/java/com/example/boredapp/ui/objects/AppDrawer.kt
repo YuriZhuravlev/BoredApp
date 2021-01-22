@@ -13,14 +13,13 @@ import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 
-class AppDrawer(activity: MainActivity) {
+class AppDrawer() {
     private var mDrawer: Drawer
-    private val mActivity = activity
 
     init {
         mDrawer = DrawerBuilder()
-                .withActivity(activity)
-                .withToolbar(activity.toolBar)
+                .withActivity(MainActivity.getActivity())
+                .withToolbar(MainActivity.getActivity().toolBar)
                 .withSelectedItem(-1)
                 .addDrawerItems(
                         ProfileDrawerItem().withName(R.string.app_name)
@@ -64,16 +63,16 @@ class AppDrawer(activity: MainActivity) {
     private fun clickToItem(position: Int) {
         when (position) {
             2 -> {
-                mActivity.replaceFragment(ActivityFragment())
+                MainActivity.getActivity().replaceFragment(ActivityFragment())
             }
             3 -> {
-                mActivity.replaceFragment(NotesFragment())
+                MainActivity.getActivity().replaceFragment(NotesFragment())
             }
             4 -> {
-                mActivity.replaceFragment(AboutFragment())
+                MainActivity.getActivity().replaceFragment(AboutFragment())
             }
             5 -> {
-                mActivity.changeTheme()
+                MainActivity.getActivity().changeTheme()
             }
         }
     }

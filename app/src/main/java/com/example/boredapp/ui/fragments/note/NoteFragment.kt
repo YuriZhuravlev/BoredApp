@@ -12,12 +12,13 @@ import com.example.boredapp.R
 import com.example.boredapp.database.Storage
 import com.example.boredapp.model.NoteModel
 import com.example.boredapp.utils.getTime
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import com.example.boredapp.utils.openWeb
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 
 class NoteFragment(note: NoteModel, isCreated: Boolean = false) : Fragment() {
     lateinit var mTitle: TextView
     lateinit var mText: EditText
+    lateinit var mBtnLink: ExtendedFloatingActionButton
     val mNote = note
     var mIsCreated = isCreated
 
@@ -25,6 +26,7 @@ class NoteFragment(note: NoteModel, isCreated: Boolean = false) : Fragment() {
         val v = inflater.inflate(R.layout.fragment_note, container, false)
         mTitle = v.findViewById(R.id.note_title)
         mText = v.findViewById(R.id.note_edit_text)
+        mBtnLink = v.findViewById(R.id.note_btn_link)
         return v
     }
 
@@ -32,6 +34,10 @@ class NoteFragment(note: NoteModel, isCreated: Boolean = false) : Fragment() {
         super.onResume()
         if (mIsCreated) {
             mTitle.requestFocus()
+        }
+        if (mNote.link.isNotEmpty()) {
+            mBtnLink.visibility = View.VISIBLE
+            mBtnLink.setOnClickListener { openWeb(mNote.link) }
         }
         mTitle.text = mNote.title
         mText.setText(mNote.text)

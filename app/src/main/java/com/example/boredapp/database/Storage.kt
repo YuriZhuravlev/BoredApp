@@ -41,6 +41,15 @@ class Storage(val database: AppDatabase) {
                 .subscribe { function(it) }
     }
 
+    fun deleteNotes(list: List<NoteModel>, function: () -> Unit) {
+        list.forEach {
+            notesDao.deleteNote(it)
+                    .subscribeOn(Schedulers.io())
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe { function() }
+        }
+    }
+
     companion object {
         private var instance: Storage? = null
         fun getStorage(context: Context = MainActivity.getActivity().applicationContext): Storage {

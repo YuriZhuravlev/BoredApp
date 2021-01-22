@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:longClickable="true"
     android:layout_margin="@dimen/normal_margin">
 
     <TextView
@@ -18,8 +19,20 @@
         android:id="@+id/item_note_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/small_margin"
         app:layout_constraintTop_toBottomOf="@id/item_note_title"
         tools:text="Learn Kotlin in android development" />
+
+    <CheckBox
+        android:id="@+id/item_note_checked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:enabled="false"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <View
         style="@style/divider"
