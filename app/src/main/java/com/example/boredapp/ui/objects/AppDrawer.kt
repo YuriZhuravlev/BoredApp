@@ -23,13 +23,13 @@ class AppDrawer() {
                 .withSelectedItem(-1)
                 .addDrawerItems(
                         ProfileDrawerItem().withName(R.string.app_name)
-                                .withIcon(R.drawable.ic_app)
+                                .withIcon(R.drawable.ic_app_round)
                                 .withSelectable(false),
                         DividerDrawerItem(),
                         PrimaryDrawerItem().withIdentifier(101)
                                 .withIconTintingEnabled(true)
                                 .withName(R.string.find_activity)
-                                .withIcon(R.drawable.ic_app)
+                                .withIcon(R.drawable.ic_find_activity)
                                 .withSelectable(false),
                         PrimaryDrawerItem().withIdentifier(102)
                                 .withIconTintingEnabled(true)

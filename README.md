@@ -1,23 +1,24 @@
 # BoredApp
-![image](https://github.com/YuriZhuravlev/BoredApp/blob/master/app/src/main/res/drawable/page0.jpg)
+![image](https://github.com/YuriZhuravlev/BoredApp/blob/master/images/Screenshot_1.png)
 ### EN
 Simple client-application with API https://www.boredapi.com/  
-Use Retrofit2+RxJava2
+Uses RxJava2, Retrofit2, Room, MaterialDrawer
 
 #### Description
 An Android app that offers classes to combat boredom.
 You can search for a completely random activity, as well as choose from a list of activity types, the number of people ("participants") and free of charge.
 ### RU
 Простое клиент-приложение использующее API https://www.boredapi.com/  
-Используется Retrofit2+RxJava2
+Используется RxJava2, Retrofit2, Room, MaterialDrawer
 
 #### Описание
 Приложение для Android, которое предлагает занятия для борьбы со скукой.
 Можно искать совершенно случайное занятие, а также выбрать из списка типов деятельности, количества людей ("participants") и бесплатности.
 
 
+![image](https://github.com/YuriZhuravlev/BoredApp/blob/master/images/Screenshot_2.png)
+![image](https://github.com/YuriZhuravlev/BoredApp/blob/master/images/Screenshot_3.png)
+![image](https://github.com/YuriZhuravlev/BoredApp/blob/master/images/Screenshot_4.png)
+
 ##### Идеи
-1. Нормальная иконка
-2. Добавить заметки (заголовок - результат, комментарий editable, ссылка если есть + добавляема, завершенность) +++
-3. Поделиться в соцсети
-4. MaterialDrawer - выдвижное меню +++
+1. Поделиться в соцсети
