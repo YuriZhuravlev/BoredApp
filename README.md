@@ -1,8 +1,11 @@
 # BoredApp
+***
 ![image](https://github.com/YuriZhuravlev/BoredApp/blob/master/images/Screenshot_1.png)
 ### EN
 Simple client-application with API https://www.boredapi.com/  
 Uses RxJava2, Retrofit2, Room, MaterialDrawer
+[Download in AppGallery](https://appgallery.huawei.com/#/app/C103760887)
+
 
 #### Description
 An Android app that offers classes to combat boredom.
