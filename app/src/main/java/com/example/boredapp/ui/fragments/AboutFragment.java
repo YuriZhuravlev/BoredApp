@@ -32,10 +32,10 @@ public class AboutFragment extends Fragment {
         getActivity().setTitle(R.string.about);
         try {
             if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_NO) {
-                mImage.setImageResource(R.drawable.img_833r_c0de_light);
+                mImage.setImageResource(R.drawable.ic_about);
 //                mImage.setImageDrawable(getResources().getDrawable(R.drawable.img_833r_c0de_light));
             } else {
-                mImage.setImageResource(R.drawable.img_833r_c0de);
+                mImage.setImageResource(R.drawable.ic_about);
 //                mImage.setImageDrawable(getResources().getDrawable(R.drawable.img_833r_c0de));
             }
         } catch (Exception e) {

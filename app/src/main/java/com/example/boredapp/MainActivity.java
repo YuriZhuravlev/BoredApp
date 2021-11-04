@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import android.os.Bundle;
 import com.example.boredapp.ui.fragments.ActivityFragment;
+import com.example.boredapp.ui.fragments.notes.NotesFragment;
 import com.example.boredapp.ui.objects.AppDrawer;
 import com.example.boredapp.utils.SharedPreferenceHelper;
 
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         mToolBar = findViewById(R.id.main_toolbar);
         setSupportActionBar(mToolBar);
         if (savedInstanceState == null) {
-            replaceFragment(new ActivityFragment(), false);
+            replaceFragment(new NotesFragment(), false);
         }
         mAppDrawer = new AppDrawer();
     }
